@@ -10,5 +10,23 @@
 <body>
  % include('navbar.tpl',home=True,settings=False)
 
+
+  <main class="container">
+    
+    % if defined("users"):
+      <h1>else</h1>
+    % else:
+ 
+<div class="col text-center mt-5">
+  <label for="channelJoin" class="h2">Enter channel url</label>
+  <input type="url" class="form-control" id="channelJoin" placeholder="https://www.joinclubhouse.com/room/PARpwlAx">
+</div>
+
+    % end
+
+  </main>
+
+
+  
 </body>
 </html>

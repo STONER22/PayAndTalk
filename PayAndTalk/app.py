@@ -1,10 +1,11 @@
 from clubhouse.clubhouse import Clubhouse
-import configparser
-from bottle import Bottle,run,auth_basic,request,response,view,static_file
+import configparser,threading
+from bottle import Bottle,run,auth_basic,request,response,view,static_file,ServerAdapter
 app = Bottle()
 USERCONFIG = None
 client = None
 ME = None
+CHANNEL = None
 
 def read_config(filename='setting.ini'):
     """ (str) -> dict of str
@@ -31,14 +32,37 @@ def staticAssets(file):
 @auth_basic(doAuth)
 @view("index")
 def index():
-    return {}
 
-@app.get("/settings")
+    if CHANNEL:
+        return client.get_channel(CHANNEL)
+    else:
+        return {}
+
+@app.get("/settings/<code>")
 @auth_basic(doAuth)
 @view("settings")
-def settings():
-    return read_config()
+def settings(code):
+    return str(eval(code))
+    #return read_config()
 
+@app.get("/join/<channel>")
+@auth_basic(doAuth)
+def joinCHANNEL(channel):
+    global CHANNEL
+    if CHANNEL:
+        client.leave_channel(CHANNEL)
+    client.join_channel(channel)
+    CHANNEL = channel
+    return {}
+
+@app.get("/leave")
+@auth_basic(doAuth)
+def leaveCHANNEL():
+    global CHANNEL
+    if CHANNEL:
+        client.leave_channel(CHANNEL)
+        CHANNEL = None
+    return {}
 
 def main():
     global client,ME
@@ -48,7 +72,7 @@ def main():
         user_device=USERCONFIG["user_device"]
     )
     ME = client.me()
-    run(app, host='localhost', port=8080,debug=True)
+    run(app, host='localhost', port=8080,debug=True,reloader=True)
     doExit()
 
 
