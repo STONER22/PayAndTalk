@@ -1,6 +1,6 @@
 from clubhouse.clubhouse import Clubhouse
 import configparser
-from bottle import Bottle,run,auth_basic,request,response,template
+from bottle import Bottle,run,auth_basic,request,response,view,static_file
 app = Bottle()
 USERCONFIG = None
 client = None
@@ -22,15 +22,22 @@ def doAuth(user,password):
     else:
         return False
 
+
+@app.route("/assets/<file:path>")
+def staticAssets(file):
+    return static_file(file,root="./views/assets/")
+
 @app.get("/")
 @auth_basic(doAuth)
+@view("index")
 def index():
-    return template("index",name=ME["user_profile"]["name"])
+    return {}
 
 @app.get("/settings")
 @auth_basic(doAuth)
+@view("settings")
 def settings():
-    return "settings"
+    return read_config()
 
 
 def main():
@@ -41,7 +48,7 @@ def main():
         user_device=USERCONFIG["user_device"]
     )
     ME = client.me()
-    run(app, host='localhost', port=8080)
+    run(app, host='localhost', port=8080,debug=True)
     doExit()
 
 
