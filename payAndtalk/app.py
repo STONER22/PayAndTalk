@@ -42,6 +42,11 @@ def main():
     )
     ME = client.me()
     run(app, host='localhost', port=8080)
+    doExit()
+
+
+def doExit():
+    pass
 
 
 if __name__ == "__main__":
