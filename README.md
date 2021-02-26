@@ -18,7 +18,7 @@ You must have a verified account that has passed the procedure
 for joining the Clubhouse (via an invite).
 
 To get started, create a Clubhouse room from your primary account.
-After that, open http://localhost:8080 and enter room url (you can find it in the share link) 
+After that, open http://localhost:8080<br>and enter room url (you can find it in the share link) 
 after add bot as a room moderator.
 
 
@@ -26,7 +26,7 @@ after add bot as a room moderator.
 1. Clone this repository
 2. Setup virtual environment, if you need
 3. Install dependencies `pip install -r requirements.txt`
-4. Run start.sh or start.bat (Linux&Windows)
+4. Run start.sh or start.bat (Unix & Windows)
 
 ### Setup
 1. Go to project folder and start login.py file.
