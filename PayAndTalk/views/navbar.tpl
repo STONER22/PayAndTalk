@@ -15,9 +15,6 @@
         <li class="nav-item">
           <a class="nav-link" href="/leave">Leave from channel</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/exit">Exit</a>
-        </li>
 
       </ul>
     </div>
