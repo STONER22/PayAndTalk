@@ -4,7 +4,7 @@ The service launches a bot that adds to the [Clubhouse](https://www.joinclubhous
 
 Used [clubhouse-py](https://github.com/stypr/clubhouse-py)
 
-Right now, work with:
+Right now, works with:
 - [ ] Yandex Money
 - [ ] Paypal
 - [ ] Qiwi wallet
