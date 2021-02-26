@@ -26,7 +26,7 @@ after add bot as a room moderator.
 1. Clone this repository
 2. Setup virtual environment, if you need
 3. Install dependencies `pip install -r requirements.txt`
-4. Run start.sh or start.bat (Linux&Windows)
+4. Run start.sh or start.bat (Unix & Windows)
 
 ### Setup
 1. Go to project folder and start login.py file.
