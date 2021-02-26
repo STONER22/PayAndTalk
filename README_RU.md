@@ -2,7 +2,8 @@
 # 👋 PayAndTalk
 Служба запускает бота, который добавляет в [Clubhouse](https://www.joinclubhouse.com) комнаты людей, которые сделали вам пожертвования.
 
-Использует [clubhouse-py](https://github.com/stypr/clubhouse-py)
+Использует [clubhouse-py](https://github.com/stypr/clubhouse-py)<br>
+и [objDB](https://googlescripts.harryonline.net/objdb)
 
 Работает с:
 - [ ] Yandex Money

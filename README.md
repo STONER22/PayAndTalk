@@ -2,7 +2,8 @@
 # 👋 PayAndTalk
 The service launches a bot that adds to the [Clubhouse](https://www.joinclubhouse.com) rooms of people who have donated to you.
 
-Used [clubhouse-py](https://github.com/stypr/clubhouse-py)
+Used [clubhouse-py](https://github.com/stypr/clubhouse-py)<br>
+and [objDB](https://googlescripts.harryonline.net/objdb)
 
 Right now, works with:
 - [ ] Yandex Money
