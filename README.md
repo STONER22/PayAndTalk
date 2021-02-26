@@ -18,7 +18,9 @@ You must have a verified account that has passed the procedure
 for joining the Clubhouse (via an invite).
 
 To get started, create a Clubhouse room from your primary account.
-After that, open login.py file and login in.
+After that, open http://localhost:8080 and enter room url (you can find it in the share link) 
+after add bot as a room moderator.
+
 
 ### Run
 1. Clone this repository
@@ -27,21 +29,15 @@ After that, open login.py file and login in.
 4. Run start.sh or start.bat (Linux&Windows)
 
 ### Setup
-1. Go to http://localhost:8080/ in your browser
+1. Go to project folder and start login.py file.
 2. Enter the phone number from your account 
 (**you must have an access to this phone number**)
 3. After redirect, enter the confirmation code that will be sent in the SMS
-4. Enter the room id (you can find it in the share link)
-5. Enter the language that the robot will speak (ru, en, etc.)
-6. After redirect, enter the application id and application secret 
-from your donation alerts application
-(you can find it [here](https://www.donationalerts.com/application/clients))
-7. Log in to donation alerts if need it
-8. Now you can invite your user to become a speaker. After a while, he will 
-accept the invitation and you will be able to accept donations via your 
-donation link
+4. Enter the Google Sheet url (See [Setup GAS.md](GAS.md))
+5. Enter the password to access to dashboard
 
-For reset configuration, delete the file "donatehouse/setting.ini".
+
+For reset configuration, delete the file "PayAndTalk/setting.ini".
 Also you can edit this file for faster setup.
 
 ## ❤️ Help
