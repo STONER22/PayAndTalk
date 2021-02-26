@@ -8,7 +8,6 @@ Right now, work with:
 - [ ] Yandex Money
 - [ ] Paypal
 - [ ] Qiwi wallet
-for [donation alerts](https://www.donationalerts.com/).
 
 ## ⚠️ Attention ⚠️
 **You use this service at your own risk and should understand 
@@ -19,7 +18,7 @@ You must have a verified account that has passed the procedure
 for joining the Clubhouse (via an invite).
 
 To get started, create a Clubhouse room from your primary account.
-After that, open http://localhost:8080/ and enter invite url and set a moderator permission to bot
+After that, open login.py file and login in.
 
 ### Run
 1. Clone this repository
