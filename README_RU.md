@@ -33,7 +33,7 @@ after add bot as a room moderator.
 2. Enter the phone number from your account 
 (**you must have an access to this phone number**)
 3. After redirect, enter the confirmation code that will be sent in the SMS
-4. Enter the Google Sheet url (See [Setup GAS.md](GAS.md))
+4. Enter the Google Sheet url (See [Setup GAS.md](GAS_RU.md))
 5. Enter the password to access to dashboard
 
 
