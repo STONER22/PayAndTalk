@@ -46,4 +46,8 @@ Also you can edit this file for faster setup.
 The most useful pull requests will be UI-altering ones, but the repository 
 is open to any help.
 
+
+## Languages
+
+EN / [RU](README.md) / [UK](README.md) / [ME](README.md)
 <!-- https://github.com/kirillkuzin/donatehouse/blob/master/README.md -->
