@@ -18,17 +18,23 @@
         .container{
             background-color: var(--maincolor)
         }
+        .modal.fadein{
+            animation-name:fadeIn;
+            animation-duration:1s;
+            animation-fill-mode:both
+        }
+        @keyframes fadeIn{0%{opacity:0}to{opacity:1}}
     </style>
 </head>
 <body>
     <main class="container h-100 d-flex">
         <div class="row w-100 align-self-center ">
-            <form action="">
+            <form>
                 <label for="customRange1" class="form-label">💰<span id="mincount">1</span> min = <span id="price"></span></label>
                 <input type="range" class="form-range" min="1" max="60" id="customRange1" value="5" oninput="printRangeValue(this.value)" required>
                 <div class="input-group mb-3 mt-3">
                     <span class="input-group-text" id="basic-addon1">@</span>
-                    <input type="text" class="form-control" placeholder="Username" required pattern="^[A-Za-z0-9]{1,16}$" title="Enter corect username">
+                    <input type="text" class="form-control" placeholder="Username" required pattern="^[A-Za-z0-9]{4,16}$" title="Enter corect username">
                 </div>
                 <div>
                     <input class="btn btn-primary" type="submit" value="Submit">
@@ -36,18 +42,74 @@
             </form>
         </div>
     </main>
+
+    <div id="modalchosetype" class="modal fadein" tabindex="-1">
+        <div class="modal-dialog  modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Choose Payment method</h5>
+            </div>
+            <div class="modal-body">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 </body>
+<!-- 
+    data = {
+        price: 0.5,
+        currency: "EUR",
+        paytype:[
+            {
+                name:"fondy",
+                merchant:1451065
+            }
+        ],
+        min:1,
+        max:60,
+        defaultV:5
+    }
+
+    btoa(JSON.stringify(data))
+
+    //eyJwcmljZSI6MC41LCJjdXJyZW5jeSI6IkVVUiIsInBheXR5cGUiOlsiZm9uZHkiXSwibWluIjoxLCJtYXgiOjYwLCJkZWZhdWx0ViI6NX0=
+ -->
+
 <script>
 try{
-    ({price,currency} = {...JSON.parse(atob(location.hash.substr(1)))})
-    document.getElementById("price").innerText = price+" "+currency
+    ({price,currency,paytype,min=1,max=60,defaultV=5} = {...JSON.parse(atob(location.hash.substr(1)))})
+    let input = document.querySelector("input[type=range]")
+    input.setAttribute("min",min)
+    input.setAttribute("max",max)
+    input.setAttribute("value",defaultV)
+    document.getElementById("mincount").innerText = defaultV;
+    document.getElementById("price").innerText = defaultV*price+" "+currency
 }catch (e){
 alert("Bad settings string")
-console.log(e)
+document.body.innerHTML='<div class="alert alert-danger mt-5 mx-3" role="alert">'+e+'</div>'
 }
 function printRangeValue(value){
 document.getElementById("mincount").innerText = value;
 document.getElementById("price").innerText = (value*1 * price) +" "+currency
 }
+document.querySelector("form").addEventListener("submit",e=>{
+e.preventDefault()
+alertBody = document.querySelector("#modalchosetype .modal-body")
+
+for (x of paytype){
+    switch (x.name) {
+        case "fondy":
+        alertBody.innerHTML += `
+        <a href='https://pay.fondy.eu/api/checkout?button={"merchant_id":${x.merchant},"currency":"${currency}","fields":[{"p":0,"name":"username","value":"${e.target[1].value}","label":"Clubhouse username","valid":"","readonly":true}],"params":{},"amount":"${e.target[0].value}","amount_readonly":true}'><img width="75px" src="https://res.cloudinary.com/apideck/image/upload/v1579130299/catalog/fondy-eu/icon128x128.png"></a>
+        `;
+        break;
+    
+    }
+}
+
+new bootstrap.Modal(document.getElementById('modalchosetype')).show()
+})
 </script>
 </html>

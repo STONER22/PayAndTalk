@@ -6,7 +6,7 @@ Used [clubhouse-py](https://github.com/stypr/clubhouse-py)<br>
 and [objDB](https://googlescripts.harryonline.net/objdb)
 
 Right now, works with:
-- [ ] Yandex Money
+- [ ] Fondy
 - [ ] Paypal
 - [ ] Qiwi wallet
 
