@@ -43,8 +43,8 @@ def main():
 
     sheetID = None
     while 1:
-        regex = r"https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\/"
-        sheetURL = input("[.] Please enter Google sheet url (https://docs.google.com/spreadsheets/d/.../edit) > ")
+        regex = r"https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\/pub"
+        sheetURL = input("[.] Please enter Google sheet url (https://docs.google.com/spreadsheets/d/.../pub) > ")
         x = re.search(regex, sheetURL)
         if(x[1]):
             sheetID = x[1]

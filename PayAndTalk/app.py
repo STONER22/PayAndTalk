@@ -1,5 +1,5 @@
 from clubhouse.clubhouse import Clubhouse
-import configparser,threading
+import configparser,threading,requests,csv
 from bottle import Bottle,run,auth_basic,request,response,view,static_file,redirect
 app = Bottle()
 USERCONFIG = None
@@ -48,7 +48,8 @@ def index():
         CHANNEL = None
         redirect("/?nojoin")
     else:
-        return {"name":ME["user_profile"]["name"],"username":ME["user_profile"]["username"],"ismoderator":False}
+        getSheetData()
+        return {"name":ME["user_profile"]["name"],"username":ME["user_profile"]["username"],"ismoderator":True}
 
 @app.get("/settings/<code>")
 @auth_basic(doAuth)
@@ -80,6 +81,18 @@ def leaveCHANNEL():
 @auth_basic(doAuth)
 def ExitProg():
     doExit()
+
+def getSheetData():
+    url = "https://docs.google.com/spreadsheets/d/e/"+USERCONFIG["sheet_id"]+"/pub?grid=0&output=csv&single=true"
+    print(url)
+    r = requests.get(url)
+    rr= r.text
+    print(rr)
+    reader = csv.reader(rr.split('\n'))
+    print(dir(reader))
+    for row in reader:
+        print('\t'.join(row))
+    return r.text
 
 def main():
     global client,ME,server

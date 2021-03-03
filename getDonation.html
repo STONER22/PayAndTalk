@@ -37,7 +37,10 @@
                     <input type="text" class="form-control" placeholder="Username" required pattern="^[A-Za-z0-9]{4,16}$" title="Enter corect username">
                 </div>
                 <div>
-                    <input class="btn btn-primary" type="submit" value="Submit">
+                    <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Disabled tooltip">
+                        <input class="btn btn-primary" type="submit" value="Submit" disabled>
+                    </span>
+                    
                 </div>
             </form>
         </div>
@@ -54,6 +57,7 @@
           </div>
         </div>
       </div>
+      
 
 
 </body>
@@ -61,6 +65,8 @@
     data = {
         price: 0.5,
         currency: "EUR",
+        limit: 5,
+        sheet:"2PACX-1vTKn3cAyEFo-2A77kBFsFBRULZFzjqrNV718v7vuSMi1OmTC4dpDFfW_xWfsbOT90ngUH2h9DM24Zny",
         paytype:[
             {
                 name:"fondy",
@@ -79,17 +85,36 @@
 
 <script>
 try{
-    ({price,currency,paytype,min=1,max=60,defaultV=5} = {...JSON.parse(atob(location.hash.substr(1)))})
+    ({price,currency,paytype,sheet,limit=5,min=1,max=60,defaultV=5} = {...JSON.parse(atob(location.hash.substr(1)))})
     let input = document.querySelector("input[type=range]")
     input.setAttribute("min",min)
     input.setAttribute("max",max)
     input.setAttribute("value",defaultV)
     document.getElementById("mincount").innerText = defaultV;
     document.getElementById("price").innerText = defaultV*price+" "+currency
+    if (price && currency && paytype && sheet){}else{
+        throw "Bad settings string"
+    }
+    tltp = document.querySelector("[data-bs-toggle=tooltip]")
+    tltp.setAttribute("title","Limit is "+limit+" users")
+    let btntlt = new bootstrap.Tooltip(tltp)
 }catch (e){
 alert("Bad settings string")
 document.body.innerHTML='<div class="alert alert-danger mt-5 mx-3" role="alert">'+e+'</div>'
 }
+
+if(sheet && limit){
+    fetch(url = "https://docs.google.com/spreadsheets/d/e/"+sheet+"/pub?grid=0&output=csv&single=true",{cache: "no-store"}).then(r=>{return r.text()})
+.then(r=>{
+    if(r.split("\n").length-1 < limit){
+        document.querySelector("input[type=submit]").removeAttribute("disabled")
+        btntlt.disable()
+    }
+    
+})
+}
+
+
 function printRangeValue(value){
 document.getElementById("mincount").innerText = value;
 document.getElementById("price").innerText = (value*1 * price) +" "+currency
@@ -108,7 +133,6 @@ for (x of paytype){
     
     }
 }
-
 new bootstrap.Modal(document.getElementById('modalchosetype')).show()
 })
 </script>
