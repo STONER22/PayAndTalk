@@ -53,10 +53,17 @@ def index():
 
 @app.get("/settings/<code>")
 @auth_basic(doAuth)
-@view("settings")
 def settings(code):
     return str(eval(code))
     #return read_config()
+
+@app.get("/settings")
+@auth_basic(doAuth)
+@view("settings")
+def settings():
+    return {}
+    #return read_config()
+
 
 @app.post("/join/<channel>")
 @auth_basic(doAuth)
