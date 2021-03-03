@@ -24,4 +24,4 @@ Deploy => New deployment => Select type (Web app) => Who has access (Anyone) => 
 
 Read a [GAS setup instruction](GAS.md)
 
-<img src="/screenshots/access_key.png" height="300px">
+<img src="/screenshots/access_key.png" height="100px">
