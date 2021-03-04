@@ -51,17 +51,20 @@ def index():
         getSheetData()
         return {"name":ME["user_profile"]["name"],"username":ME["user_profile"]["username"],"ismoderator":True}
 
-@app.get("/settings/<code>")
+@app.post("/settings/<sname>/<svalue>")
 @auth_basic(doAuth)
-def settings(code):
-    return str(eval(code))
-    #return read_config()
+def settings(sname,svalue):
+    if sname == "script_acode":
+        
+        abort(405,"Error mesage")
+    return sname
+    pass
 
 @app.get("/settings")
 @auth_basic(doAuth)
 @view("settings")
 def settings():
-    return {}
+    return USERCONFIG
     #return read_config()
 
 
@@ -121,5 +124,12 @@ def doExit():
 
 if __name__ == "__main__":
     USERCONFIG = read_config()
+    if not "sheet_id" in USERCONFIG:
+        r = requests.post("https://script.google.com/macros/s/"+USERCONFIG["script_id"]+"/exec?t=login",data=USERCONFIG["script_acode"])
+        config = configparser.ConfigParser()
+        config.read("setting.ini")
+        config["Account"].update({"sheet_id":r.text})
+        with open("setting.ini", 'w') as config_file:
+            config.write(config_file)
     print("-"*30)
     main()

@@ -1,7 +1,7 @@
 from clubhouse.clubhouse import Clubhouse
 import configparser,re
 
-def write_config(user_id, user_token, user_device, script_id, dashboard_pass, phone_number, filename='setting.ini'):
+def write_config(user_id, user_token, user_device, script_id, dashboard_pass,AccessCode, phone_number, filename='setting.ini'):
     """ (str, str, str, str, str, str, str) -> bool
     Write Config. return True on successful file write
     """
@@ -11,6 +11,7 @@ def write_config(user_id, user_token, user_device, script_id, dashboard_pass, ph
         "user_id": user_id,
         "user_token": user_token,
         "script_id":script_id,
+        "script_acode":AccessCode
         "password":dashboard_pass,
         "login":phone_number
     }
@@ -51,6 +52,16 @@ def main():
             break
         else:
             print("[!] Bad URL format")
+    AccessCode = None
+    while 1:
+        passw = input("[.] Please enter script access code > ")
+      
+        if(passw):
+            AccessCode = passw
+            break
+        else:
+            print("[!] Bad code")
+    
     WebLoginP=None
     while 1:
         passw = input("[.] Please enter web dashboard login password > ")
@@ -65,7 +76,7 @@ def main():
     user_id = result['user_profile']['user_id']
     user_token = result['auth_token']
     user_device = client.HEADERS.get("CH-DeviceId")
-    write_config(user_id, user_token, user_device, scriptID, WebLoginP,user_phone_number)
+    write_config(user_id, user_token, user_device, scriptID, AccessCode, WebLoginP,user_phone_number)
 
     print("[.] Writing configuration file complete.")
 
