@@ -5,7 +5,7 @@ app = Bottle()
 USERCONFIG = None
 client = None
 ME = None
-CHANNEL = None or "PYWq7jwM"
+CHANNEL = None
 server = None
 
 def Merge(dict1, dict2):
@@ -40,6 +40,7 @@ def index():
     global CHANNEL
 
     if CHANNEL:
+        getSheetData()
         dataCHANNEL = client.get_channel(CHANNEL)
         dataMe = {"name":ME["user_profile"]["name"],"username":ME["user_profile"]["username"]}
         for x in dataCHANNEL["users"]:
@@ -48,14 +49,14 @@ def index():
         CHANNEL = None
         redirect("/?nojoin")
     else:
-        getSheetData()
-        return {"name":ME["user_profile"]["name"],"username":ME["user_profile"]["username"],"ismoderator":True}
+        return {"name":ME["user_profile"]["name"],"username":ME["user_profile"]["username"],"ismoderator":True,
+        "channels":getChannel2Table()
+        }
 
 @app.post("/settings/<sname>/<svalue>")
 @auth_basic(doAuth)
 def settings(sname,svalue):
     if sname == "script_acode":
-        
         abort(405,"Error mesage")
     return sname
     pass
@@ -93,7 +94,7 @@ def ExitProg():
     doExit()
 
 def getSheetData():
-    url = "https://docs.google.com/spreadsheets/d/e/"+USERCONFIG["sheet_id"]+"/pub?grid=0&output=csv&single=true"
+    url = "https://docs.google.com/spreadsheets/d/"+USERCONFIG["sheet_id"]+"/pub?grid=0&output=csv&single=true"
     print(url)
     r = requests.get(url)
     rr= r.text
@@ -103,6 +104,22 @@ def getSheetData():
     for row in reader:
         print('\t'.join(row))
     return r.text
+
+    
+def getChannel2Table():
+    channels = client.get_channels()["channels"]
+    fchannels=[]
+    for x in channels:
+        fchannels.append({
+            "channel":x["channel"],
+            "topic":x["topic"],
+            "speakers":x["num_speakers"],
+            "all":x["num_all"],
+        })
+    return fchannels
+
+
+
 
 def main():
     global client,ME,server

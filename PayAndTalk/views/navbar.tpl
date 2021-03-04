@@ -6,12 +6,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav w-100 mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item me-auto">
           <a class="nav-link {{"active" if home else ""}}" aria-current="page" href="/">Home</a>
         </li>
-        <li class="nav-item me-auto">
+<!-- 
+        <li class="nav-item ">
           <a class="nav-link {{"active" if settings else ""}}" href="/settings">Settings</a>
-        </li>
+        </li> -->
+
         <li class="nav-item">
           <a class="nav-link" href="/leave">Leave from channel</a>
         </li>
