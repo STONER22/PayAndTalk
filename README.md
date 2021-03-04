@@ -18,7 +18,7 @@ that your account may be blocked.**
 
 ## Usage
 
-![GitHub Repo stars](https://img.shields.io/github/stars/gornostay25/PayAndTalk?style=social) ![GitHub watchers](https://img.shields.io/github/watchers/gornostay25/PayAndTalk?style=social)
+[![GitHub Repo stars](https://img.shields.io/github/stars/gornostay25/PayAndTalk?style=social)](https://github.com/gornostay25/PayAndTalk/stargazers) [![GitHub watchers](https://img.shields.io/github/watchers/gornostay25/PayAndTalk?style=social)](https://github.com/gornostay25/PayAndTalk/watchers)
 
 
 You must have a verified account that has passed the procedure 
