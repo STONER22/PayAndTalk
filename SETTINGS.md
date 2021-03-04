@@ -1,7 +1,5 @@
 # Settings instruction
 
-
-
 ## General page
 
 ### Sheet url
@@ -24,8 +22,4 @@ Deploy => New deployment => Select type (Web app) => Who has access (Anyone) => 
 
 Read a [GAS setup instruction](GAS.md)
 
-<<<<<<< HEAD
 <img src="/screenshots/access_key.png" height="100px">
-=======
-<img src="/screenshots/access_key.png" height="100px">
->>>>>>> 36932be95c93a4f2be5d34e076fb642b861e3d31
