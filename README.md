@@ -31,10 +31,10 @@ Then open http://localhost:8080 <br>
 then add the bot as the **moderator** of the room.
 
 ### Setup
-1. Clone this repository or download the archive from the [releases] tab (https://github.com/gornostay25/PayAndTalk/releases)
+1. Clone this repository or download the archive from the [releases](https://github.com/gornostay25/PayAndTalk/releases) tab
 2. Setup virtual environment, if you need
 3. Install dependencies pip install -r requirements.txt
-4. Install and configure GATEWAY ([instruction] (/docs/EN/GAS.md))
+4. Install and configure GATEWAY ([instruction](/docs/EN/GAS.md))
 5. Run the script start.sh (Unix) або start.bat (Windows)
     * at firt 
       1. Enter the phone number from your account
@@ -47,13 +47,13 @@ then add the bot as the **moderator** of the room.
 ### Run
 
 
-1. When the configuration is complete, run the script again`start.sh` (Unix)or `start.bat` (Windows)
-2. Then open http://localhost: 8080
+1. When the configuration is complete, run the script again `start.sh` (Unix) or `start.bat` (Windows)
+2. Then open http://localhost:8080
 3. [Instructions for use](/docs/EN/USE.md)
 
 
-> To reset the configuration, delete the file "PayAndTalk / setting.ini".
-> You can also edit this file for quick setup.
+To reset the configuration, delete the file " `PayAndTalk/setting.ini` ".
+You can also edit this file for quick setup.
 
 ## ❤️ Help and support
 
