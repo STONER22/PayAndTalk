@@ -17,6 +17,10 @@ Right now, works with:
 that your account may be blocked.**
 
 ## Usage
+
+![GitHub Repo stars](https://img.shields.io/github/stars/gornostay25/PayAndTalk?style=social) ![GitHub watchers](https://img.shields.io/github/watchers/gornostay25/PayAndTalk?style=social)
+
+
 You must have a verified account that has passed the procedure 
 for joining the Clubhouse (via an invite).
 
