@@ -1,5 +1,7 @@
 <!-- https://github.com/kirillkuzin/donatehouse/blob/master/README.md -->
 # 👋 PayAndTalk
+![GitHub top language](https://img.shields.io/github/languages/top/gornostay25/PayAndTalk) ![GitHub](https://img.shields.io/github/license/gornostay25/PayAndTalk) ![Status](https://img.shields.io/static/v1?label=Status&message=Development&color=important&style=flat) ![GitHub last commit](https://img.shields.io/github/last-commit/gornostay25/PayAndTalk)
+
 The service launches a bot that adds to the [Clubhouse](https://www.joinclubhouse.com) rooms of people who have donated to you.
 
 Used [clubhouse-py](https://github.com/stypr/clubhouse-py)<br>
