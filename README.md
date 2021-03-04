@@ -35,25 +35,21 @@ then add the bot as the **moderator** of the room.
 2. Setup virtual environment, if you need
 3. Install dependencies pip install -r requirements.txt
 4. Install and configure GATEWAY ([instruction] (/docs/EN/GAS.md))
-5. Run the script 
-start.sh (Unix) 
-або start.bat (Windows)
-   * #### At the first start
-      1. Enter the phone number from your account
-      2. Then enter the confirmation code that will be sent in the SMS
-      3. Enter the address of the [GATEWAY](/docs/EN/GAS.md) script
-      4. Enter the [access code](/docs/EN/GAS.md) to GATEWAY
-      5. Come up with a password to access the program
+5. Run the script start.sh (Unix) або start.bat (Windows)
+    * at firt 
+      1. Enter the phone number from your account
+      8. Then enter the confirmation code that will be sent in the SMS
+      9. Enter the address of the [GATEWAY](/docs/EN/GAS.md) script
+      10. Enter the [access code](/docs/EN/GAS.md) to GATEWAY
+      11. Come up with a password to access the program
 
 
+### Run
 
-### Run
 
-1. When the configuration is complete, run the script again
-`start.sh` (Unix)
-or `start.bat` (Windows)
-2. Then open http://localhost: 8080
-3. [Instructions for use](/docs/EN/USE.md)
+1. When the configuration is complete, run the script again`start.sh` (Unix)or `start.bat` (Windows)
+2. Then open http://localhost: 8080
+3. [Instructions for use](/docs/EN/USE.md)
 
 
 > To reset the configuration, delete the file "PayAndTalk / setting.ini".
