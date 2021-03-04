@@ -1,7 +1,7 @@
 from clubhouse.clubhouse import Clubhouse
 import configparser,re
 
-def write_config(user_id, user_token, user_device, sheet_id, dashboard_pass, phone_number, filename='setting.ini'):
+def write_config(user_id, user_token, user_device, script_id, dashboard_pass, phone_number, filename='setting.ini'):
     """ (str, str, str, str, str, str, str) -> bool
     Write Config. return True on successful file write
     """
@@ -10,7 +10,7 @@ def write_config(user_id, user_token, user_device, sheet_id, dashboard_pass, pho
         "user_device": user_device,
         "user_id": user_id,
         "user_token": user_token,
-        "sheet_id":sheet_id,
+        "script_id":script_id,
         "password":dashboard_pass,
         "login":phone_number
     }
@@ -41,13 +41,13 @@ def main():
     
     print("[.] Login complete")
 
-    sheetID = None
+    scriptID = None
     while 1:
-        regex = r"https:\/\/docs\.google\.com\/spreadsheets\/d\/(.*)\/pub"
-        sheetURL = input("[.] Please enter Google sheet url (https://docs.google.com/spreadsheets/d/.../pub) > ")
-        x = re.search(regex, sheetURL)
+        regex = r"https:\/\/script\.google\.com\/macros\/s\/(.*)\/exec"
+        scriptURL = input("[.] Please enter gateway script url (https://script.google.com/macros/s/.../exec) > ")
+        x = re.search(regex, scriptURL)
         if(x[1]):
-            sheetID = x[1]
+            scriptID = x[1]
             break
         else:
             print("[!] Bad URL format")
@@ -65,7 +65,7 @@ def main():
     user_id = result['user_profile']['user_id']
     user_token = result['auth_token']
     user_device = client.HEADERS.get("CH-DeviceId")
-    write_config(user_id, user_token, user_device, sheetID, WebLoginP,user_phone_number)
+    write_config(user_id, user_token, user_device, scriptID, WebLoginP,user_phone_number)
 
     print("[.] Writing configuration file complete.")
 

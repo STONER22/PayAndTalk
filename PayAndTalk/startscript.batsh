@@ -1,0 +1,12 @@
+//
+//https://batsh.org/
+//https://github.com/batsh-dev-team/Batsh
+settings = "./setting.ini";
+
+if (exists(settings)){
+    bash("exec python app.py");
+    batch("python app.py");
+}else{
+    bash("exec python login.py");
+    batch("python login.py");
+}
