@@ -66,5 +66,6 @@ is open to any help.
 
 ## Мови
 
-[EN](/README.md) / [RU](/docs/RU/README.md) / UK / [ME](/docs/ME/README.md)
+[EN](/README.md) / UK 
+<!-- / [ME](/docs/ME/README.md)  / [RU](/docs/RU/README.md)   -->
 <!-- https://github.com/kirillkuzin/donatehouse/blob/master/README.md -->
