@@ -63,5 +63,6 @@ is open to any help.
 
 ## Languages
 
-EN / [RU](/docs/RU/README.md) / [UK](/docs/UK/README.md) / [ME](/docs/ME/README.md)
+EN / [UK](/docs/UK/README.md)
+<!-- [RU](/docs/RU/README.md) /  / [ME](/docs/ME/README.md)  -->
 <!-- https://github.com/kirillkuzin/donatehouse/blob/master/README.md -->
