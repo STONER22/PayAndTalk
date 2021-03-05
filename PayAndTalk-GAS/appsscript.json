@@ -1,23 +1,30 @@
 {
-    "timeZone": "America/New_York",
-    "dependencies": {
-      "libraries": [
-        {
-          "userSymbol": "objDB",
-          "version": "22",
-          "libraryId": "1o_O_ZkZm1GuTF5J1LYkfntUpiaT0sxDHyhZXL4fQma89mNIB65epbL6H"
-        },
-        {
-          "userSymbol": "BetterLog",
-          "version": "27",
-          "libraryId": "1DSyxam1ceq72bMHsE6aOVeOl94X78WCwiYPytKi7chlg4x5GqiNXSw0l"
-        }
-      ]
-    },
-    "exceptionLogging": "STACKDRIVER",
-    "runtimeVersion": "V8",
-    "webapp": {
-      "executeAs": "USER_DEPLOYING",
-      "access": "ANYONE_ANONYMOUS"
-    }
+  "timeZone": "America/New_York",
+  "dependencies": {
+    "libraries": [
+      {
+        "userSymbol": "objDB",
+        "version": "22",
+        "libraryId": "1o_O_ZkZm1GuTF5J1LYkfntUpiaT0sxDHyhZXL4fQma89mNIB65epbL6H"
+      },
+      {
+        "userSymbol": "BetterLog",
+        "version": "27",
+        "libraryId": "1DSyxam1ceq72bMHsE6aOVeOl94X78WCwiYPytKi7chlg4x5GqiNXSw0l"
+      }
+    ],
+    "enabledAdvancedServices": [
+      {
+        "userSymbol": "Drive",
+        "version": "v2",
+        "serviceId": "drive"
+      }
+    ]
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "webapp": {
+    "executeAs": "USER_DEPLOYING",
+    "access": "ANYONE_ANONYMOUS"
   }
+}
