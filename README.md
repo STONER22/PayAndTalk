@@ -33,7 +33,7 @@ then add the bot as the **moderator** of the room.
 ### Setup
 1. Clone this repository or download the archive from the [releases](https://github.com/gornostay25/PayAndTalk/releases) tab
 2. Setup virtual environment, if you need
-3. Install dependencies pip install -r requirements.txt
+3. Install dependencies `pip install -r requirements.txt`
 4. Install and configure GATEWAY ([instruction](/docs/EN/GAS.md))
 5. Run the script start.sh (Unix) або start.bat (Windows)
     * at firt 
