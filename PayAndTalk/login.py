@@ -39,12 +39,12 @@ def main():
             print(f"[-] Error occured during authentication. ({result['error_message']})")
             continue
         break
-    
+
     print("[.] Login complete")
 
     scriptID = None
+    regex = r"https:\/\/script\.google\.com\/macros\/s\/(.*)\/exec"
     while 1:
-        regex = r"https:\/\/script\.google\.com\/macros\/s\/(.*)\/exec"
         scriptURL = input("[.] Please enter gateway script url (https://script.google.com/macros/s/.../exec) > ")
         x = re.search(regex, scriptURL)
         if(x[1]):
@@ -54,19 +54,15 @@ def main():
             print("[!] Bad URL format")
     AccessCode = None
     while 1:
-        passw = input("[.] Please enter script access code > ")
-      
-        if(passw):
+        if passw := input("[.] Please enter script access code > "):
             AccessCode = passw
             break
         else:
             print("[!] Bad code")
-    
+
     WebLoginP=None
     while 1:
-        passw = input("[.] Please enter web dashboard login password > ")
-      
-        if(passw):
+        if passw := input("[.] Please enter web dashboard login password > "):
             WebLoginP = passw
             break
         else:
@@ -81,7 +77,7 @@ def main():
     print("[.] Writing configuration file complete.")
 
     if result['is_waitlisted'] or result['is_onboarding']:
-        
+
         print("[!] Please sign up from a real device.")
         return
     

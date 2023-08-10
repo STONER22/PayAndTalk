@@ -9,8 +9,7 @@ CHANNEL = None
 server = None
 
 def Merge(dict1, dict2):
-    res = {**dict1, **dict2}
-    return res
+    return {**dict1, **dict2}
 
 def read_config(filename='setting.ini'):
     """ (str) -> dict of str
@@ -18,15 +17,10 @@ def read_config(filename='setting.ini'):
     """
     config = configparser.ConfigParser()
     config.read(filename)
-    if "Account" in config:
-        return dict(config['Account'])
-    return dict()
+    return dict(config['Account']) if "Account" in config else {}
 
 def doAuth(user,password):
-    if USERCONFIG["login"] == user and USERCONFIG["password"] == password:
-        return True
-    else:
-        return False
+    return USERCONFIG["login"] == user and USERCONFIG["password"] == password
 
 
 @app.route("/assets/<file:path>")
@@ -39,19 +33,18 @@ def staticAssets(file):
 def index():
     global CHANNEL
 
-    if CHANNEL:
-        getSheetData()
-        dataCHANNEL = client.get_channel(CHANNEL)
-        dataMe = {"name":ME["user_profile"]["name"],"username":ME["user_profile"]["username"]}
-        for x in dataCHANNEL["users"]:
-            if x["username"] == dataMe["username"]:
-                return Merge(Merge(dataMe,{"ismoderator":x["is_moderator"]}),dataCHANNEL)
-        CHANNEL = None
-        redirect("/?nojoin")
-    else:
+    if not CHANNEL:
         return {"name":ME["user_profile"]["name"],"username":ME["user_profile"]["username"],"ismoderator":True,
         "channels":getChannel2Table()
         }
+    getSheetData()
+    dataCHANNEL = client.get_channel(CHANNEL)
+    dataMe = {"name":ME["user_profile"]["name"],"username":ME["user_profile"]["username"]}
+    for x in dataCHANNEL["users"]:
+        if x["username"] == dataMe["username"]:
+            return Merge(Merge(dataMe,{"ismoderator":x["is_moderator"]}),dataCHANNEL)
+    CHANNEL = None
+    redirect("/?nojoin")
 
 @app.post("/settings/<sname>/<svalue>")
 @auth_basic(doAuth)
@@ -59,7 +52,6 @@ def settings(sname,svalue):
     if sname == "script_acode":
         abort(405,"Error mesage")
     return sname
-    pass
 
 @app.get("/settings")
 @auth_basic(doAuth)
@@ -108,15 +100,15 @@ def getSheetData():
     
 def getChannel2Table():
     channels = client.get_channels()["channels"]
-    fchannels=[]
-    for x in channels:
-        fchannels.append({
-            "channel":x["channel"],
-            "topic":x["topic"],
-            "speakers":x["num_speakers"],
-            "all":x["num_all"],
-        })
-    return fchannels
+    return [
+        {
+            "channel": x["channel"],
+            "topic": x["topic"],
+            "speakers": x["num_speakers"],
+            "all": x["num_all"],
+        }
+        for x in channels
+    ]
 
 
 
@@ -136,12 +128,11 @@ def main():
 
 def doExit():
     exit(0)
-    pass
 
 
 if __name__ == "__main__":
     USERCONFIG = read_config()
-    if not "sheet_id" in USERCONFIG:
+    if "sheet_id" not in USERCONFIG:
         r = requests.post("https://script.google.com/macros/s/"+USERCONFIG["script_id"]+"/exec?t=login",data=USERCONFIG["script_acode"])
         config = configparser.ConfigParser()
         config.read("setting.ini")
